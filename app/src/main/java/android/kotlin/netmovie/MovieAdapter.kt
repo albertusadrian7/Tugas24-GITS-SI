@@ -1,11 +1,14 @@
 package android.kotlin.netmovie
 
+import android.content.Intent
 import android.kotlin.netmovie.model.ResultsItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -24,10 +27,29 @@ class MovieAdapter(private val listMovie: ArrayList<ResultsItem>): RecyclerView.
     override fun onBindViewHolder(holder: MovieAdapter.ViewHolder, position: Int) {
         val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
         val data = listMovie[position]
+        val rating = data.adult
+        var ketRating = ""
+        if (rating == true) {
+            ketRating = "Dewasa"
+        } else {
+            ketRating = "Remaja"
+        }
         holder.judulFilm.text = data.title
         holder.tanggalRilisFilm.text = tglIndonesia(data.releaseDate.toString())
-        holder.popularitas.text = data.popularity.toString()
+        holder.ratingBar.rating = ((data.voteAverage)!! /2.toFloat()).toFloat()
         Glide.with(holder.itemView).load(IMAGE_BASE + data.posterPath).into(holder.gambarFilm)
+        holder.pilihFilm.setOnClickListener{
+            val intent = Intent(holder.itemView.context, DetailMovieActivity::class.java)
+            intent.putExtra("judulFilm", data.title.toString())
+            intent.putExtra("tanggalRilisFilm", tglIndonesia(data.releaseDate.toString()))
+            intent.putExtra("rateFilm", ((data.voteAverage)!! /2.toFloat()).toFloat())
+            intent.putExtra("ratingFilm", ketRating)
+            intent.putExtra("gambarFilm", data.posterPath.toString())
+            intent.putExtra("popularitasFilm", data.popularity.toString())
+            intent.putExtra("overviewFilm", data.overview)
+            print("Poster path: ${data.posterPath}")
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = listMovie.size
@@ -36,7 +58,8 @@ class MovieAdapter(private val listMovie: ArrayList<ResultsItem>): RecyclerView.
         var gambarFilm: ImageView = itemView.findViewById(R.id.gambarFilm)
         var judulFilm: TextView = itemView.findViewById(R.id.judulFilm)
         var tanggalRilisFilm: TextView = itemView.findViewById(R.id.tglRilis)
-        var popularitas: TextView = itemView.findViewById(R.id.popularitas)
+        var ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
+        var pilihFilm: CardView = itemView.findViewById(R.id.card_layout)
     }
 
     fun tglIndonesia (tgl: String): String{

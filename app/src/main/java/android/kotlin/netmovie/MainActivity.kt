@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 if (response!!.isSuccessful){
                     response.body()?.let { tampilMovie(it) }
+                    val hasil = response.body()?.results
+                    for (item in hasil!!){
+                        detailMovie(item!!.id)
+                    }
                     val toast = Toast.makeText(this@MainActivity, "Daftar Film", Toast.LENGTH_LONG)
                     toast.show()
                 } else {
@@ -45,5 +49,9 @@ class MainActivity : AppCompatActivity() {
     private fun tampilMovie(data : MovieResponse){
         val result = data.results
         movieAdapter.setData(result as List<ResultsItem>)
+    }
+
+    private fun detailMovie(id: Int?){
+        RetrofitClient
     }
 }

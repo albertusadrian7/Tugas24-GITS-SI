@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".DetailMovieActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        >
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/gambarDetailFilm"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/moneyheist"
+            app:shapeAppearanceOverlay="@style/RoundedSquare" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:layout_alignBottom="@+id/gambarDetailFilm"
+            android:layout_alignTop="@+id/gambarDetailFilm"
+            android:layout_toEndOf="@+id/gambarDetailFilm"
+            android:layout_toRightOf="@+id/gambarDetailFilm">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tanggal Rilis: "
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/tglRilisDetailFilm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/poppins"
+                android:text="tanggal rilis"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Rating: "
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/poppins"
+                android:text="rating"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Popularitas: "
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/popularitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/poppins"
+                android:text="popularitas"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginTop="15dp"
+                android:text="Rate: "
+                android:textSize="12sp"
+                />
+            <RatingBar
+                android:id="@+id/rateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:isIndicator="false"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/judulDetailFilm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Judul Film"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sinopsis:"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/poppins_semibold"
+        />
+
+    <TextView
+        android:id="@+id/detailOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overview"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/poppins"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buy_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="bottom"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
+        android:layout_marginHorizontal="16dp"
+        android:textAllCaps="false"
+        android:text="Buy Ticket" />
+
+</LinearLayout>
