@@ -1,151 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="20dp"
     tools:context=".DetailMovieActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_gravity="center"
-        >
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/gambarDetailFilm"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:src="@drawable/moneyheist"
-            app:shapeAppearanceOverlay="@style/RoundedSquare" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp"
-            android:gravity="center_vertical"
-            android:layout_alignBottom="@+id/gambarDetailFilm"
-            android:layout_alignTop="@+id/gambarDetailFilm"
-            android:layout_toEndOf="@+id/gambarDetailFilm"
-            android:layout_toRightOf="@+id/gambarDetailFilm">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Tanggal Rilis: "
-                android:textSize="12sp"
-                />
-            <TextView
-                android:id="@+id/tglRilisDetailFilm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:fontFamily="@font/poppins"
-                android:text="tanggal rilis"
-                android:textSize="14sp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Rating: "
-                android:textSize="12sp"
-                />
-            <TextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:fontFamily="@font/poppins"
-                android:text="rating"
-                android:textSize="14sp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Popularitas: "
-                android:textSize="12sp"
-                />
-            <TextView
-                android:id="@+id/popularitas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:fontFamily="@font/poppins"
-                android:text="popularitas"
-                android:textSize="14sp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dark_blue"
-                android:fontFamily="@font/poppins_semibold"
-                android:layout_marginTop="15dp"
-                android:text="Rate: "
-                android:textSize="12sp"
-                />
-            <RatingBar
-                android:id="@+id/rateBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:isIndicator="false"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                />
-        </LinearLayout>
 
-    </RelativeLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/gambarDetailFilm"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/moneyheist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
     <TextView
         android:id="@+id/judulDetailFilm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Judul Film"
-        android:textColor="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
+        android:text="Judul Film"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/dark_blue"
         android:textSize="20sp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gambarDetailFilm" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sinopsis:"
-        android:textSize="14sp"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/dark_blue"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_semibold"
-        />
+        android:text="Sinopsis:"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/judulDetailFilm" />
 
     <TextView
         android:id="@+id/detailOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
         android:text="Overview"
         android:textColor="@color/dark_blue"
-        android:fontFamily="@font/poppins"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/buy_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_gravity="bottom"
-        android:textColor="@color/white"
-        android:background="@drawable/custom_button"
         android:layout_marginHorizontal="16dp"
+        android:background="@drawable/custom_button"
+        android:text="Buy Ticket"
         android:textAllCaps="false"
-        android:text="Buy Ticket" />
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Tanggal Rilis: "
+        android:layout_marginStart="10dp"
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toTopOf="@+id/gambarDetailFilm" />
+
+    <TextView
+        android:id="@+id/tglRilisDetailFilm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="tanggal rilis"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Rating: "
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/tglRilisDetailFilm" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="rating"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Popularitas: "
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/rating" />
+
+    <TextView
+        android:id="@+id/popularitas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="popularitas"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Rate: "
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/popularitas" />
+    <RatingBar
+        android:id="@+id/rateBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:isIndicator="false"
+        app:layout_constraintStart_toEndOf="@+id/gambarDetailFilm"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

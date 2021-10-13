@@ -1,57 +1,33 @@
 package android.kotlin.netmovie
 
-import android.kotlin.netmovie.model.MovieResponse
+import android.kotlin.netmovie.adapter.MovieAdapter
 import android.kotlin.netmovie.model.ResultsItem
-import android.kotlin.netmovie.services.RetrofitClient
+import android.kotlin.netmovie.presenter.MoviePresenter
+import android.kotlin.netmovie.view.MovieView
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
-    val movieAdapter = MovieAdapter(arrayListOf())
+class MainActivity : AppCompatActivity(), MovieView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MoviePresenter(this).getDataMovie()
+    }
+
+    override fun onDataCompleteFromApi(movieData: List<ResultsItem>) {
+        val movieAdapter = MovieAdapter(movieData as ArrayList<ResultsItem>)
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = movieAdapter
-        getMovieData()
+        Toast.makeText(this, "Daftar Movie", Toast.LENGTH_SHORT).show()
     }
 
-    private fun getMovieData(){
-        RetrofitClient.instance.getMovieList().enqueue(object: Callback<MovieResponse>{
-            override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                if (response!!.isSuccessful){
-                    response.body()?.let { tampilMovie(it) }
-                    val hasil = response.body()?.results
-                    for (item in hasil!!){
-                        detailMovie(item!!.id)
-                    }
-                    val toast = Toast.makeText(this@MainActivity, "Daftar Film", Toast.LENGTH_LONG)
-                    toast.show()
-                } else {
-                    val toast = Toast.makeText(this@MainActivity, "Gagal memberikan response", Toast.LENGTH_LONG)
-                    toast.show()
-                }
-            }
-            override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                val toast = Toast.makeText(this@MainActivity, "Tidak ada respon $t", Toast.LENGTH_LONG)
-                toast.show()
-            }
-        })
+    override fun onDataErrorFromApi(throwable: Throwable?) {
+        Toast.makeText(this, "Tidak ada respon $throwable", Toast.LENGTH_LONG).show()
+        error("Tidak ada respon: ${throwable?.localizedMessage}")
     }
 
-    private fun tampilMovie(data : MovieResponse){
-        val result = data.results
-        movieAdapter.setData(result as List<ResultsItem>)
-    }
-
-    private fun detailMovie(id: Int?){
-        RetrofitClient
-    }
 }
